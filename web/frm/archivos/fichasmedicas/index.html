@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CEPI | Fichas Medicas</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="confirmar"></div>
+    <div id="buscar"></div>
+    <div id="panelPrograma" class="panel panel-primary">
+        <div class="panel-heading centrado">Fichas Medicas | <span id="susuario_usuario"></span></div>
+        <div class="panel-body">
+            <form id="formPrograma">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_fichamedica" name="id_fichamedica" type="text" class="form-control input-sm"
+                            placeholder="Id" onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdFichaMedica" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+                <hr>
+                <!-- alumno -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id Alumno</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_alumno" name="id_alumno" type="text" class="form-control input-sm" placeholder="Id Alumno"
+                            onkeypress=" return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdAlumno" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nombre Alumno</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input disabled="" id="nombre_alumno" name="nombre_alumno" type="text" class="form-control input-sm"
+                            placeholder="Nombre" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Apellido Alumno</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input disabled id="apellido_alumno" name="apellido_alumno" type="text" class="form-control input-sm"
+                            placeholder="Apellido" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Fecha Nac: </span>
+                    </div>
+                    <div class="col-md-2">
+                        <input disabled id="fecha_nac_alumno" name="fecha_nac_alumno" type="date" class="form-control input-sm">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Peso Actual</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="peso_actual" name="peso_actual" type="number" min="1" max="100" class="form-control input-sm"
+                            placeholder="Peso Kg" required="" onkeypress="return SoloNumeros(event)">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Peso al nacer</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="peso_nacimiento" name="peso_nacimiento" type="number" min="1" max="100" class="form-control input-sm"
+                            placeholder="Peso Kg" onkeypress="return SoloNumeros(event)">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Tipo de parto</span>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" id="tipo_parto" name="tipo_parto">
+                            <option selected="selected" name="tipo_parto" value="NORMAL">NORMAL</option>
+                            <option name="tipo_parto" value="CESAREA">CESAREA</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Notas del embarazo</span>
+                    </div>
+                    <div class="col-md-11">
+                        <input id="descripcion_embarazo" name="descripcion_embarazo" type="text" class="form-control input-sm"
+                            placeholder="" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Vacunas</span>
+                    </div>
+                    <div class="col-md-11">
+                        <input id="descripcion_vacunas" list="lista_vacunas" name="descripcion_vacunas" type="text" class="form-control input-sm"
+                            placeholder="" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                        <datalist id="lista_vacunas">
+                        <option value="COMPLETAS">
+                        <option value="INCOMPLETAS"> 
+                      </datalist>
+                    </div>
+                </div>
+
+
+                
+                
+                
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Alergias</span>
+                    </div>
+                    <div class="col-md-11">
+                        <input id="descripcion_alergias" name="descripcion_alergias" type="text" class="form-control input-sm"
+                            placeholder="" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Enfermedades</span>
+                    </div>
+                    <div class="col-md-11">
+                        <input id="descripcion_enfermedades" name="descripcion_enfermedades" type="text" class="form-control input-sm"
+                            placeholder="" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Obs importantes</span>
+                    </div>
+                    <div class="col-md-11">
+                        <input id="obs_importantes" name="obs_importantes" type="text" class="form-control input-sm"
+                            placeholder="" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+            <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+            <button id="BotonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+        </div>
+    </div>
+    <div id="mensajes" class="well well-sm centrado">Mensaje del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">
+                            &times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+        verificarSesion(true);
+        $("#buscar").css("display", "none");
+        $("#id_fichamedica").focus();
+        siguienteCampo("#id_fichamedica", "id_alumno", false);
+        $("#id_fichamedica").focusout(function (event) {
+            if ($("#id_fichamedica").val() === "") {
+                $("#id_fichamedica").val("0");
+            }
+            buscarIdFichaMedica();
+        });
+        $("#botonBuscarIdFichaMedica").on('click', function () {
+            $("#buscar").load("buscar.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        //ALUMNO
+        $("#id_alumno").focusout(function (event) {
+            if ($("#id_alumno").val() === "") {
+                $("#id_alumno").val("0");
+            }
+            buscarIdAlumno();
+        });
+        $("#botonBuscarIdAlumno").on('click', function () {
+            $("#buscar").load("buscarAlumno.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+
+        $("#botonAgregar").on('click', function () {
+            if (validarFormulario()) {
+                agregarFichaMedica();
+            }
+        });
+        $("#botonModificar").on('click', function () {
+            if (validarFormulario()) {
+                modificarFichaMedica();
+            }
+        });
+        $("#botonEliminarAlert").on('click', function () {
+            eliminarFichaMedica();
+            $('#confirmarEliminar').modal('hide');
+        });
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+    </script>
+</body>
+
+</html>

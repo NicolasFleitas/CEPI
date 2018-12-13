@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="usuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b6b17d11-251e-459c-b188-4e52df8f794d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DESDE" class="java.lang.Integer"/>
+	<parameter name="HASTA" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT * FROM usuarios WHERE id_usuario BETWEEN $P{DESDE} and $P{HASTA}]]>
+	</queryString>
+	<field name="id_usuario" class="java.lang.Integer"/>
+	<field name="id_rol" class="java.lang.Integer"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="login_usuario" class="java.lang.String"/>
+	<field name="password_usuario" class="java.lang.String"/>
+	<group name="id_usuario">
+		<groupExpression><![CDATA[$F{id_usuario}]]></groupExpression>
+	</group>
+	<group name="nombre_usuario">
+		<groupExpression><![CDATA[$F{nombre_usuario}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="6545eeb7-6ce6-459a-b730-d24d1163427b"/>
+				<text><![CDATA[id_usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="d3aa980f-a08b-448c-abd0-656e1b501d75"/>
+				<text><![CDATA[id_rol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="55192550-513d-4ded-a316-6678eb63e583"/>
+				<text><![CDATA[nombre_usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="9e7a6fab-7c98-42b1-8079-a44c2e2cf19d"/>
+				<text><![CDATA[login_usuario]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="8" width="100" height="20" uuid="b91b5a71-1f94-4207-923e-88fb237b8c00"/>
+				<textFieldExpression><![CDATA[$F{id_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="8" width="100" height="20" uuid="a6be2cd0-7ba9-4e3c-bee5-5564fd9e144c"/>
+				<textFieldExpression><![CDATA[$F{id_rol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="8" width="100" height="20" uuid="758c4661-5fac-43d9-8043-b0fb357f4d49"/>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="8" width="100" height="20" uuid="f737c4f6-1480-4563-b780-1e6d432b733f"/>
+				<textFieldExpression><![CDATA[$F{login_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

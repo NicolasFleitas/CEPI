@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inscripcion_constancia" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="82ab803f-7316-4ff1-bc7e-5b1964723b01">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="312"/>
+	<parameter name="ID_INSCRIPCION" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT * FROM inscripciones i, cuentas_cte cta, alumnos a, tutores t, convocatorias cv, cursos c, turnos turno, parentescos pp
+WHERE
+i.id_convocatoria = cv.id_convocatoria
+and
+cv.id_curso = c.id_curso
+and
+cv.id_turno = turno.id_turno
+and
+i.id_alumno = a.id_alumno
+and
+a.id_tutor = t.id_tutor
+and
+t.id_parentesco = pp.id_parentesco
+and i.id_inscripcion = $P{ID_INSCRIPCION}]]>
+	</queryString>
+	<field name="id_inscripcion" class="java.lang.Integer"/>
+	<field name="id_alumno" class="java.lang.Integer"/>
+	<field name="id_convocatoria" class="java.lang.Integer"/>
+	<field name="fecha_inscripcion" class="java.sql.Date"/>
+	<field name="nro_cuotas" class="java.lang.Integer"/>
+	<field name="vencimientocuota_inscripcion" class="java.sql.Date"/>
+	<field name="id_cuenta" class="java.lang.Integer"/>
+	<field name="cuota_cuota" class="java.lang.Integer"/>
+	<field name="vencimiento_cuota" class="java.sql.Date"/>
+	<field name="monto_cuota" class="java.lang.Integer"/>
+	<field name="total_cuota" class="java.lang.Integer"/>
+	<field name="id_concepto" class="java.lang.Integer"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="nombre_alumno" class="java.lang.String"/>
+	<field name="apellido_alumno" class="java.lang.String"/>
+	<field name="nroci_alumno" class="java.lang.Integer"/>
+	<field name="fecha_nac_alumno" class="java.sql.Date"/>
+	<field name="nombre_medico" class="java.lang.String"/>
+	<field name="telefono_medico" class="java.lang.Integer"/>
+	<field name="id_sexo" class="java.lang.Integer"/>
+	<field name="id_tutor" class="java.lang.Integer"/>
+	<field name="nombre_tutor" class="java.lang.String"/>
+	<field name="apellido_tutor" class="java.lang.String"/>
+	<field name="ruc_tutor" class="java.lang.String"/>
+	<field name="direccion_tutor" class="java.lang.String"/>
+	<field name="telefono_tutor" class="java.lang.Integer"/>
+	<field name="email_tutor" class="java.lang.String"/>
+	<field name="id_estadocivil" class="java.lang.Integer"/>
+	<field name="id_nacionalidad" class="java.lang.Integer"/>
+	<field name="id_parentesco" class="java.lang.Integer"/>
+	<field name="id_ciudad" class="java.lang.Integer"/>
+	<field name="profesion_tutor" class="java.lang.String"/>
+	<field name="ocupacion_tutor" class="java.lang.String"/>
+	<field name="direccion_laboral_tutor" class="java.lang.String"/>
+	<field name="fecha_nac_tutor" class="java.sql.Date"/>
+	<field name="telefono_laboral_tutor" class="java.lang.String"/>
+	<field name="id_curso" class="java.lang.Integer"/>
+	<field name="id_turno" class="java.lang.Integer"/>
+	<field name="monto_convocatoria" class="java.lang.Integer"/>
+	<field name="codigo_convocatoria" class="java.lang.String"/>
+	<field name="monto_matricula" class="java.lang.Integer"/>
+	<field name="fecha_convocatoria" class="java.sql.Date"/>
+	<field name="nombre_curso" class="java.lang.String"/>
+	<field name="nombre_turno" class="java.lang.String"/>
+	<field name="nombre_parentesco" class="java.lang.String"/>
+	<variable name="fecha_nac_alumno_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{fecha_nac_alumno}]]></variableExpression>
+	</variable>
+	<variable name="ruc_tutor_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{ruc_tutor}]]></variableExpression>
+	</variable>
+	<group name="id_inscripcion">
+		<groupExpression><![CDATA[$F{id_inscripcion}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="455" y="0" width="100" height="20" uuid="e7942bd7-b814-4aa0-ad54-60b0ec412324"/>
+				<textFieldExpression><![CDATA[$F{fecha_inscripcion}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="97" height="79" uuid="0f17f7bd-c3e2-43a9-aa25-20300dc489e8"/>
+				<imageExpression><![CDATA["C:\\git\\CEPI\\web\\img\\cepi.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="120" y="20" width="335" height="20" uuid="2f6312d8-5d4f-4a46-b9f7-0c7e0dc99bad"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Centro de Estimulación Psicopedagogico Infantil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="59" width="166" height="20" uuid="81546ad1-63d6-4989-8bbe-10a07522a18f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Constancia de Inscripcion]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="abc4ca47-827c-43e0-a792-fafa642fb7de"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="323" splitType="Stretch">
+			<textField>
+				<reportElement x="101" y="0" width="130" height="20" uuid="420146a5-3e64-4eb9-90e9-31c64cd4daee"/>
+				<textFieldExpression><![CDATA[$F{nombre_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="20" width="130" height="20" uuid="01a14a4e-0dda-4a13-a6cb-62fc22a0b9e5"/>
+				<textFieldExpression><![CDATA[$F{apellido_alumno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2563c702-dff5-4f8c-8d6a-1c520874c42a"/>
+				<text><![CDATA[Nombres del niño/a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="76b3dcb5-bbf7-4e11-815c-b823a01224ef"/>
+				<text><![CDATA[Fecha de Nacimiento:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="101" y="40" width="130" height="20" uuid="29924c4e-cff7-4c74-b65c-b1efacba79a8"/>
+				<textFieldExpression><![CDATA[$F{fecha_nac_alumno}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="60" width="555" height="1" uuid="d78f1a18-9916-47cf-803d-cf38c1eb1572"/>
+			</line>
+			<textField>
+				<reportElement x="101" y="151" width="85" height="20" uuid="a95e38e4-e137-4e5e-affc-3947f19bd066"/>
+				<textFieldExpression><![CDATA[$F{nombre_curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="151" width="148" height="20" uuid="a397f804-b6fa-49c7-a66f-9604a8b9d38c"/>
+				<textFieldExpression><![CDATA[$F{nombre_turno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="107" width="150" height="20" uuid="441acadc-6a3e-4203-8b67-3fc7c1f18baa"/>
+				<textFieldExpression><![CDATA[$F{direccion_tutor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="67" width="150" height="20" uuid="d59e5151-feef-47ea-84d4-8e77de6fc877"/>
+				<textFieldExpression><![CDATA[$F{nombre_tutor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="87" width="150" height="20" uuid="54e80014-54ab-4b7a-be07-3aafe16db617"/>
+				<textFieldExpression><![CDATA[$F{apellido_tutor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="127" width="121" height="20" uuid="8fdecfde-bbde-4f36-ba1e-afe83b874331"/>
+				<textFieldExpression><![CDATA[$F{telefono_laboral_tutor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="127" width="150" height="20" uuid="f9b624d9-5d7f-46c2-9397-a585014b12f2"/>
+				<textFieldExpression><![CDATA[$F{direccion_laboral_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="67" width="91" height="20" uuid="21683d15-e54e-4a03-8340-a1793da7f1b4"/>
+				<text><![CDATA[Nombres del Tutor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="67" width="43" height="20" uuid="54f1d0ea-515a-4f02-8c33-b43f30a5d515"/>
+				<text><![CDATA[C.I.N°:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="107" width="91" height="20" uuid="003ebd38-b71c-4507-8e39-7a97f78a14d2"/>
+				<text><![CDATA[Dirección Particular:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="127" width="91" height="20" uuid="0a93cce8-0141-4949-9cb9-1d29f9d35d87"/>
+				<text><![CDATA[Dirección Laboral:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="87" width="43" height="20" uuid="744e7929-5bb4-4513-9bf2-a5489192df71"/>
+				<text><![CDATA[Telef.:]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="293" y="87" width="100" height="20" uuid="56525a2d-c5a5-4c01-8eb3-5ca37a8c02b1"/>
+				<textFieldExpression><![CDATA[$F{telefono_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="127" width="71" height="20" uuid="66cc799b-1ab8-48ce-8934-2dcab773d800"/>
+				<text><![CDATA[Telef. Laboral:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="152" width="97" height="20" uuid="9003a5c4-a7a6-44ac-9d94-6f42f4fa3cd7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[El plan escogido es: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="148" width="555" height="1" uuid="ae031783-15f4-4389-9eac-3f93e1183a48"/>
+			</line>
+			<textField>
+				<reportElement x="293" y="107" width="100" height="20" uuid="10c5362b-8c72-4518-9912-f6d3b1217807"/>
+				<textFieldExpression><![CDATA[$F{nombre_parentesco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="107" width="43" height="20" uuid="63ca3380-f733-4191-8f0c-7e9cb287d6de"/>
+				<text><![CDATA[Relación: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="175" width="555" height="1" uuid="76974ad6-5222-47cb-8b81-bb51e1c94fe8"/>
+			</line>
+			<textField>
+				<reportElement x="100" y="237" width="24" height="20" uuid="cbb7e3d9-fc54-4ddf-b02f-52955f7e8ba4"/>
+				<textFieldExpression><![CDATA[$F{nro_cuotas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="100" y="217" width="67" height="20" uuid="d64f2824-3dbf-44c8-8b31-0d01ed9d1973"/>
+				<textFieldExpression><![CDATA[$F{monto_convocatoria}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="100" y="197" width="65" height="20" uuid="ac4f755e-aa00-424f-b866-07e8e5d40b59"/>
+				<textFieldExpression><![CDATA[$F{monto_matricula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="177" width="147" height="20" uuid="f4f84ede-830d-444f-84e0-a2c780217aa3"/>
+				<textElement>
+					<font size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Detalles del Plan Escogido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="197" width="100" height="20" uuid="72162135-22e6-41b1-adff-93c2585f0fbb"/>
+				<text><![CDATA[Monto de la Matricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="217" width="100" height="20" uuid="a6f67684-1b59-433f-b7c3-af2a2ef22f5b"/>
+				<text><![CDATA[Monto de la cuota:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="237" width="100" height="20" uuid="f688f842-fa62-407e-a15c-77d53b74ad9c"/>
+				<text><![CDATA[Cantidad de Cuotas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="45cdf1b4-e2fd-473f-b304-c289fe9c55e9"/>
+				<text><![CDATA[Apellidos del niño/a:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="91" height="20" uuid="2e6471a6-69f3-4e62-b8de-6aabd2b9b2a2"/>
+				<text><![CDATA[Apellidos del Tutor:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="293" y="67" width="100" height="20" uuid="0a83249d-1731-4b2e-baac-20b2db6f925b"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{ruc_tutor})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="237" width="100" height="20" uuid="60385298-ddd4-45cb-bb8e-608eea86119a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma del Tutor:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="371" y="237" width="100" height="1" uuid="8000b986-ec8c-438d-a5c9-17e9f64006f4"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement x="293" y="0" width="100" height="20" uuid="d82d5775-d924-450a-a9aa-7f5a56d82e3d"/>
+				<textFieldExpression><![CDATA[$F{nroci_alumno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="0" width="40" height="20" uuid="519c8da1-5c48-495d-b515-f713a041b494"/>
+				<text><![CDATA[C.I.N°: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="151" width="124" height="20" uuid="bc11782a-5a49-43f6-a393-ea4a41af6009"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[correspondiente al turno: ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="7" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="2" splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="273"/>
+	</noData>
+</jasperReport>

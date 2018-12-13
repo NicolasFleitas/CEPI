@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CEPI | Permisos</title>
+        <link rel="icon" type="image/png" href="../../../favicon.png" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="confirmar"></div>
+        <div id="buscar"></div>
+        <div id="panelPrograma" class="panel panel-primary">
+            <div class="panel-heading centrado">Permisos | <span id="snombre_empresa"></span> | <span id="susuario_usuario"></span></div>
+            <div class="panel-body">
+                <form id="formPrograma">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_permiso" name="id_permiso" type="text" class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdPermiso" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-9">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Rol</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_rol" name="id_rol" type="text" class="form-control input-sm" placeholder="Id Rol">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdRol" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-9">
+                            <input id="nombre_rol" name="nombre_rol" type="text" class="form-control input-sm" placeholder="Nombre Rol" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Formulario</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_formulario" name="id_formulario" type="text" class="form-control input-sm" placeholder="Id Formulario">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdFormulario" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-9">
+                            <input id="nombre_formulario" name="nombre_formulario" type="text" class="form-control input-sm" placeholder="Nombre Formulario" disabled="disabled">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+                <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+                <button id="botonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+                <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+            </div>
+        </div>
+        <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+        <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header centrado">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                        Está seguro de eliminar estos datos?
+                    </div>
+                    <div class="modal-footer centrado">
+                        <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../../js/funciones.js" type="text/javascript"></script>
+        
+        <script src="js/funciones.js" type="text/javascript"></script>
+        <script>
+           // verificarSesion(true);
+            $("#buscar").css("display", "none");
+            $("#id_permiso").focus();
+            siguienteCampo("#id_permiso", "#id_rol", false);
+            siguienteCampo("#id_rol", "#id_formulario", false);
+            siguienteCampo("#id_formulario", "#botonBuscarIdFormulario", true);
+            $("#id_permiso").focusout(function (event) {
+                if ($("#id_permiso").val() === "") {
+                    $("#id_permiso").val("0");
+                }
+                buscarIdPermiso();
+            });
+            $("#id_rol").focusout(function (event) {
+                if ($("#id_rol").val() === "") {
+                    $("#id_rol").val("0");
+                }
+                buscarIdRol();
+            });
+            $("#id_formulario").focusout(function (event) {
+                if ($("#id_formulario").val() === "") {
+                    $("#id_formulario").val("0");
+                }
+                buscarIdFormulario();
+            });
+            $("#botonBuscarIdPermiso").on('click', function () {
+                $("#buscar").load("buscar.html");
+                $("#buscar").fadeIn("slow");
+                $("#panelPrograma").fadeOut("slow");
+            });
+            $("#botonBuscarIdRol").on('click', function () {
+                $("#buscar").load("buscarRoles.html");
+                $("#buscar").fadeIn("slow");
+                $("#panelPrograma").fadeOut("slow");
+            });
+            $("#botonBuscarIdFormulario").on('click', function () {
+                $("#buscar").load("buscarFormularios.html");
+                $("#buscar").fadeIn("slow");
+                $("#panelPrograma").fadeOut("slow");
+            });
+            $("#botonAgregar").on('click', function () {
+                if ($("#id_rol").val() === "") {
+                    $("#mensajes").html("Rol no puede estar vacio.");
+                } else {
+                    if ($("#id_formulario").val() === "") {
+                        $("#mensajes").html("Formulario no puede estar vacia.");
+                    } else {
+                        agregarPermiso();
+                    }
+                }
+            });
+            $("#botonModificar").on('click', function () {
+              
+                        modificarPermiso();
+               
+            });
+            $("#botonEliminarAlert").on('click', function () {
+                eliminarPermiso();
+                $('#confirmarEliminar').modal('hide');
+            });
+            $("#botonSalir").on('click', function () {
+                location.href = "../../../menu.html";                
+            });
+        </script>
+    </body>
+</html>

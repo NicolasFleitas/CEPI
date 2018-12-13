@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Constancias de Inscripcion</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="buscar"></div>
+    <div id="panelPrograma" class="panel panel-primary">
+        <div class="panel-heading centrado">Listado de Constancias |<span id="lista_constancias"></span>
+        </div>
+        <div class="panel-body">
+            <form id="formPrograma">
+                <div class="row">
+                    <div class="col-md-2">
+                        <span>Constancias</span>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="listado" class="form-control">
+                            <option value="constancias">Constancias</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"><span>Código de Inscripcion</span></div>
+                    <div class="col-md-1">
+                        <input id="id_inscripcion" name="id_inscripcion" type="text" class="form-control input-sm"
+                            placeholder="Id" onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdInscripcion" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_alumno" name="nombre_alumno" type="text" class="form-control input-sm"
+                            placeholder="Nombre" disabled="disabled">
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Apellido</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="apellido_alumno" name="apellido_alumno" type="text" class="form-control input-sm"
+                            placeholder="Apellido" disabled="disabled">
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>C.I.Nº</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nroci_alumno" name="nroci_alumno" type="text" class="form-control input-sm"
+                            placeholder="Nro C.I." disabled="disabled">
+                    </div>
+                </div>                
+                   <div class="row">
+                    <div class="col-md-1">
+                        <span>Curso</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_curso" name="nombre_curso" type="text" class="form-control input-sm"
+                            placeholder="Curso" disabled="disabled">
+                    </div>
+                </div>
+                
+                  <div class="row">
+                    <div class="col-md-1">
+                        <span>Turno</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_turno" name="nombre_turno" type="text" class="form-control input-sm"
+                            placeholder="Turno" disabled="disabled">
+                    </div>
+                </div>
+                
+                
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonImprimir" type="button" class="btn btn-primary btn-sm">
+                Imprimir
+            </button>
+            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">
+                Salir
+            </button>
+        </div>
+    </div>
+    
+    <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+        verificarSesion(true);
+        $("#id_inscripcion").focus();
+        siguienteCampo("#id_inscripcion", "#nombre_alumno", false);
+        $("#id_inscripcion").focusout(function (event) {
+            if ($("#id_inscripcion").val() === "") {
+                $("#id_inscripcion").val("0");
+            }
+            buscarIdInscripcion();
+        });
+
+        $("#botonBuscarIdInscripcion").on('click', function () {
+            $("#buscar").load("buscar.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        $("#botonImprimir").on('click', function () {
+            var l = $("#listado").val();
+            var id_ins = $("#id_inscripcion").val();
+            var jsp = "jsp/constancias.jsp";
+            window.open(jsp + "?l=" + l + "&id=" + id_ins);
+        });
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>CEPI | Tutores</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="confirmar"></div>
+    <div id="buscar"></div>
+    <div id="panelPrograma" class="panel panel-primary">
+        <div class="panel-heading centrado">Tutores | <span id="susuario_usuario"></span></div>
+        <div class="panel-body">
+            <form id="formPrograma">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_tutor" name="id_tutor" type="text" class="form-control input-sm" placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdTutor" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_tutor" name="nombre_tutor" type="text" class="form-control input-sm"
+                            placeholder="Nombre" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+                <!-- <br> -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Apellido</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="apellido_tutor" name="apellido_tutor" type="text" class="form-control input-sm"
+                            placeholder="Apellido" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+                <!-- <br> -->
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>C.I.Nº</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="ruc_tutor" name="ruc_tutor" type="text" class="form-control input-sm" placeholder="Nro de CI"
+                            onkeypress=" return SoloNumeros(event)">
+                    </div>
+                </div>
+                <!-- <br> -->
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Telefono </span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="telefono_tutor" name="telefono_tutor" type="text" class="form-control input-sm"
+                            placeholder="Telefono" onkeypress=" return SoloNumeros(event)">
+                    </div>
+                </div>
+                <!-- <br> -->
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Direccion </span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="direccion_tutor" name="direccion_tutor" type="text" placeholder="Direccion" class="form-control input-sm"
+                            onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+                <!-- <br> -->
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Email</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input  id="email_tutor" name="email_tutor" type="email" 
+                               pattern="[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+"
+                               title="ejemplo@email.com" class="form-control input-sm " placeholder="Email" required="">                        
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Nac</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_nacionalidad" name="id_nacionalidad" type="text" class="form-control input-sm"
+                            placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdNacionalidad" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nacionalidad</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input disabled="" id="nombre_nacionalidad" name="nombre_nacionalidad" type="text" class="form-control input-sm"
+                            placeholder="Nombre" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Ciudad</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_ciudad" name="id_ciudad" type="text" class="form-control input-sm" placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdCiudad" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+
+                    <div class="col-md-3">
+                        <input disabled="" id="nombre_ciudad" name="nombre_ciudad" type="text" class="form-control input-sm"
+                            placeholder="Ciudad" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>                    
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Est.Civ.</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_estadocivil" name="id_estadocivil" type="text" class="form-control input-sm"
+                            placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdEstadoCivil" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <input disabled="" id="nombre_estadocivil" name="nombre_estadocivil" type="text" class="form-control input-sm"
+                            placeholder="Estado Civil">
+                    </div>
+                </div>              
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Parentesco</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_parentesco" name="id_parentesco" type="text" class="form-control input-sm">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdParentesco" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    
+                     <div class="col-md-3">
+                        <input disabled="" id="nombre_parentesco" name="nombre_parentesco" type="text" class="form-control input-sm"
+                            placeholder="Parentesco">
+                    </div>
+                </div>             
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Fecha Nac.</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="fecha_nac_tutor" name="fecha_nac_tutor" type="date" class="form-control input-sm">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Profesion</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="profesion_tutor" name="profesion_tutor" type="text" class="form-control input-sm"
+                            placeholder="profesion" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Ocupacion</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="ocupacion_tutor" name="ocupacion_tutor" type="text" class="form-control input-sm"
+                            placeholder="ocupacion" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Direc Laboral</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="direccion_laboral_tutor" name="direccion_laboral_tutor" type="text" class="form-control input-sm"
+                            placeholder="direccion laboral" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Telef. Laboral</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="telefono_laboral_tutor" name="telefono_laboral_tutor" type="text" class="form-control input-sm"
+                            placeholder="telefono ">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+            <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+            <button id="BotonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+        </div>
+    </div>
+    <div id="mensajes" class="well well-sm centrado">Mensaje del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">
+                            &times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script>
+        verificarSesion(true);
+        $("#buscar").css("display", "none");
+        $("#id_tutor").focus();
+        // siguientecampo("#id_tutor", "#nombre_tutor", false);
+        $("#id_tutor").focusout(function (event) {
+            if ($("#id_tutor").val() === "") {
+                $("#id_tutor").val("0");
+            }
+            buscarIdTutor();
+        });
+        $("#botonBuscarIdTutor").on('click', function () {
+            $("#buscar").load("buscar.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        $("#botonAgregar").on('click', function () {
+            //if (validarFormulario()) {
+            agregarTutor();
+            //}  
+        });
+        $("#botonModificar").on('click', function () {
+            //if(validarFormulario()) {
+            modificarTutor();
+            //}   
+        });
+        $("#botonEliminarAlert").on('click', function () {
+            eliminarTutor();
+            $('#confirmarEliminar').modal('hide');
+        });
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+        //  CIUDAD
+
+        $("#id_ciudad").focusout(function (event) {
+            if ($("#id_ciudad").val() === "") {
+                $("#id_ciudad").val("0");
+            }
+            buscarIdCiudad();
+        });
+        $("#botonBuscarIdCiudad").on('click', function () {
+            $("#buscar").load("buscarCiudad.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+
+
+        // ESTADO CIVIL
+        $("#id_estadocivil").focusout(function (event) {
+            if ($("#id_estadocivil").val() === "") {
+                $("#id_estadocivil").val("0");
+            }
+            buscarIdEstadoCivil();
+        });
+        $("#botonBuscarIdEstadoCivil").on('click', function () {
+            $("#buscar").load("buscarEstadoCivil.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        // NACIONALIDAD
+
+        $("#id_nacionalidad").focusout(function (event) {
+            if ($("#id_nacionalidad").val() === "") {
+                $("#id_nacionalidad").val("0");
+            }
+            buscarIdNacionalidad();
+        });
+        $("#botonBuscarIdNacionalidad").on('click', function () {
+            $("#buscar").load("buscarNacionalidad.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        // PARENTESCO
+
+        $("#id_parentesco").focusout(function (event) {
+            if ($("#id_parentesco").val() === "") {
+                $("#id_parentesco").val("0");
+            }
+            buscarIdParentesco();
+        });
+        $("#botonBuscarIdParentesco").on('click', function () {
+            $("#buscar").load("buscarParentesco.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

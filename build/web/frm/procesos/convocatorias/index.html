@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CEPI | Convocatorias</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="confirmar"></div>
+    <div id="buscar"></div>
+    <div id="panelLinea" class="panel panel-primary">
+        <div class="panel-heading centrado">Convocatorias | Detalle</div>
+        <div class="panel-body">
+            <form id="formLinea">
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Linea</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_detalleconvocatoria" name="id_detalleconvocatoria" type="text" class="form-control input-sm"
+                            placeholder="ID" readonly="readonly">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Profesor</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_profesor" name="id_profesor" type="text" class="form-control input-sm"
+                            placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdProfesor" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="nombre_profesor" name="nombre_profesor" type="text" class="form-control input-sm"
+                               placeholder="Nombre Profesor" disabled="">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonAgregarLinea" type="button" class="btn btn-primary btn-sm">Agregar</button>
+            <button id="botonModificarLinea" type="button" class="btn btn-primary btn-sm">Modificar</button>
+            <button id="botonEliminarLinea" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                data-target="#confirmarEliminarLinea">Eliminar</button>
+            <button id="botonSalirLinea" type="button" class="btn btn-primary btn-sm">Salir</button>
+        </div>
+    </div>
+    <!-- ********************************-->
+
+    <div id="panelPrograma" class="panel panel-primary">
+        <div class="panel-heading centrado">Convocatorias | <span id="snombre_empresa"></span> | <span id="susuario_usuario"></span></div>
+        <div class="panel-body">
+            <form id="formPrograma">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>ID Convocatoria</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_convocatoria" name="id_convocatoria" type="text" class="form-control input-sm"
+                            placeholder="Id" onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdConvocatoria" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Fecha</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="fecha_convocatoria" name="fecha_convocatoria" type="date" class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Curso</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_curso" name="id_curso" type="text" class="form-control input-sm" placeholder="Id"
+                            onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdCurso" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_curso" name="nombre_curso" type="text" class="form-control input-sm"
+                            placeholder="Nombre Curso" disabled="disabled">
+                    </div>
+                </div>
+                <!-- TURNO -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Turno</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_turno" name="id_turno" type="text" class="form-control input-sm" placeholder="Id"
+                            onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdTurno" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_turno" name="nombre_turno" type="text" class="form-control input-sm"
+                            placeholder="Nombre Turno" disabled="disabled">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Monto</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="monto_convocatoria" name="monto_convocatoria" type="text" class="form-control input-sm"
+                            placeholder="Costo" onkeypress="return SoloNumeros(event)">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Matricula</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="monto_matricula" name="monto_matricula" type="text" class="form-control input-sm"
+                            placeholder="Matricula" onkeypress="return SoloNumeros(event)">
+                    </div>
+                </div>
+                <!-- CODIGO DE CONVOCATORIA -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Código</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="codigo_convocatoria" name="codigo_convocatoria" type="text" class="form-control input-sm derecha"
+                            placeholder="Cod">
+                    </div>                    
+                </div>
+                                <!-- ESTADO DE CONVOCATORIA -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Estado</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="convocatoria_estado" name="convocatoria_estado" type="text" 
+                               class="form-control input-sm" list="estados" placeholder="Estado">
+                        <datalist id="estados">
+                            <option>HABILITADO</option>
+                            <option>DESHABILITADO</option>                                
+                        </datalist>
+                    </div>                    
+                </div>
+                                
+            </form>
+            <hr>
+            <!-- TABLA DE DETALLES-->
+            <div id="detalle" hidden="">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>ID Prof</th>
+                            <th>Profesor</th>
+                            <th class="centrado"><button onclick="agregarLinea()" type="button" class="btn btn-primary btn-sm"><span
+                                        class="glyphicon glyphicon-plus"></span></button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenidoDetalle">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+            <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+            <button id="botonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+        </div>
+    </div>
+
+
+    <!-- ********************************-->
+
+    <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    Está seguro de eliminar estos datos?
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--********** -->
+    <div class="modal fade" id="confirmarEliminarLinea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabelLinea">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-body">
+                    Está seguro de eliminar esta linea?
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlertLinea" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+
+    <script>
+        verificarSesion(true);
+        $("#buscar").css("display", "none");
+        $("#panelLinea").css("display", "none");
+        $("#id_convocatoria").focus();
+        siguienteCampo("#id_convocatoria", "#id_curso", false);
+        siguienteCampo("#id_profesor", false);
+
+        if ($("#id_convocatoria").val() === "0") {
+            siguienteCampo("#id_curso", "#botonAgregar", false);
+        } else {
+            siguienteCampo("#id_curso", "#botonModificar", false);
+        }
+
+        $("#id_convocatoria").focusout(function (event) {
+            if ($("#id_convocatoria").val() === "") {
+                $("#id_convocatoria").val("0");
+            }
+            buscarIdConvocatoria();
+            var id = $("#id_convocatoria").val();
+            $("#id_convocatoria").val("0");
+            ////var img = "<img src='../../../img/convocatorias/" + id + ".jpg' alt=''>";
+            //$("#foto").html(img);        
+        });
+
+        // TURNO                                   
+        $("#id_turno").focusout(function (event) {
+            if ($("#id_turno").val() === "") {
+                $("#id_turno").val("0");
+            }
+            buscarIdTurno();
+        });
+        //**
+        //CURSO
+        $("#id_curso").focusout(function (event) {
+            if ($("#id_curso").val() === "") {
+                $("#id_curso").val("0");
+            }
+            buscarIdCurso();
+        });
+        //**
+        // PROFESOR
+        $("#id_profesor").focusout(function (event) {
+            if ($("#id_profesor").val() === "") {
+                $("#id_profesor").val("0");
+            }
+            buscarIdProfesor();
+        });
+        // BOTONES BUSCAR ID
+        $("#botonBuscarIdConvocatoria").on('click', function () {
+            $("#buscar").load("buscar.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        $("#botonBuscarIdCurso").on('click', function () {
+            $("#buscar").load("buscarCurso.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        $("#botonBuscarIdProfesor").on('click', function () {
+            $("#buscar").load("buscarProfesor.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelLinea").fadeOut("slow");
+        });
+
+        $("#botonBuscarIdTurno").on('click', function () {
+            $("#buscar").load("buscarTurno.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        //********************************************************************
+        $("#botonAgregar").on('click', function () {            
+            if (validarFormulario()) {
+                agregarConvocatoria();
+            }              
+        });
+        $("#botonModificar").on('click', function () {
+           if (validarFormulario()) {
+             modificarConvocatoria(); 
+        }       
+       });
+        $("#botonEliminarAlert").on('click', function () {
+            eliminarConvocatoria();
+            $('#confirmarEliminar').modal('hide');
+        });
+
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+
+        $("#botonAgregarLinea").on('click', function () {
+            if (validarDetalle()){
+                agregarConvocatoriaDetalle();
+            }            
+        });
+        $("#botonModificarLinea").on('click', function () {
+            modificarConvocatoriaDetalle();
+        });
+
+        $("#botonEliminarAlertLinea").on('click', function () {
+            eliminarConvocatoriaDetalle();
+            $('#confirmarEliminarLinea').modal('hide');
+        });
+
+        $("#botonSalirLinea").on('click', function () {
+            $("#panelLinea").fadeOut("slow");
+            $("#panelPrograma").fadeIn("slow");
+        });
+    </script>
+</body>
+
+</html>

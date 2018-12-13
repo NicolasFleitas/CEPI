@@ -1,0 +1,72 @@
+<div id="panelBuscar" class="panel panel-primary">
+    <div class="panel-heading centrado">Buscar Roles</div>
+    <div class="panel-body">
+        <form id="formBuscar">
+            <input type="hidden" id="bpagina" name="bpagina" value="1" />
+            <div class="row">
+                <div class="col-md-1">
+                    <span>Nombre</span>
+                </div>
+                <div class="col-md-9">
+                    <input id="bnombre_rol" name="bnombre_rol" type="text" class="form-control input-sm" placeholder="Nombre">
+                </div>
+                <div class="col-md-2">
+                    <button id="botonBuscar" type="button" class="btn btn-primary btn-sm">Buscar</button>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div id="resultado">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody id="contenidoBusqueda">
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pager">
+                    <li id="anterior"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
+                    <li id="siguiente"><a href="#">Siguiente <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="panel-footer centrado">
+        <button id="botonSalirBuscar" type="button" class="btn btn-primary btn-sm">Salir</button>
+    </div>
+</div>
+<script>
+    buscarNombreRol();
+    $("#bnombre_rol").focus();
+    siguienteCampo("#bnombre_rol", "#botonBuscar", false);
+    $("#botonBuscar").on("click", function() {
+        $("#contenidoBusqueda").html("");
+        $("#bpagina").val("1"); 
+        buscarNombreRol();
+        $("#bnombre_rol").focus();
+    });
+    $("#anterior").on("click", function() {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        if (pag > 1) {
+            $("#bpagina").val(pag - 1);
+        }
+        buscarNombreRol();
+    });
+    $("#siguiente").on("click", function() {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        $("#bpagina").val(pag + 1);
+        buscarNombreRol();
+    });
+
+    $("#botonSalirBuscar").on('click', function () {
+        $("#buscar").fadeOut("slow");
+        $("#panelPrograma").fadeIn("slow");
+    }); 
+</script>
+

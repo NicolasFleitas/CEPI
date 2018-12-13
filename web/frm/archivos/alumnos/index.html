@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CEPI | Alumnos</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="confirmar"></div>
+    <div id="buscar"></div>
+    <div id="panelPrograma" class="panel panel-primary">
+        <div class="panel-heading centrado">Alumnos | <span id="susuario_usuario"></span></div>
+        <div class="panel-body">
+            <form id="formPrograma">
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_alumno" name="id_alumno" type="text" class="form-control input-sm" placeholder="Id"
+                            onkeypress=" return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdAlumno" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                    <div class="col-md-9">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nro CI: </span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="nroci_alumno" name="nroci_alumno" type="text" class="form-control input-sm"
+                            placeholder="Nro. CI" onkeypress=" return SoloNumeros(event)">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="nombre_alumno" name="nombre_alumno" type="text" class="form-control input-sm"
+                            placeholder="Nombre" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Apellido</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="apellido_alumno" name="apellido_alumno" type="text" class="form-control input-sm"
+                            placeholder="Apellido" onkeypress=" return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Fecha Nac: </span>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="fecha_nac_alumno" name="fecha_nac_alumno" type="date" class="form-control input-sm">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_sexo" name="id_sexo" type="text" class="form-control input-sm" placeholder="Id"
+                            onkeypress="return SoloNumeros(event)">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdSexo" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Sexo</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input readonly="" id="nombre_sexo" name="nombre_sexo" type="text" class="form-control input-sm"
+                            placeholder="Sexo del Alumno" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Médico</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <input id="nombre_medico" name="nombre_medico" type="text" class="form-control input-sm"
+                            placeholder="Nombre del medico" onkeyup="this.value = this.value.toUpperCase()" onkeypress=" return soloLetras(event)">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Teléfono</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="telefono_medico" name="telefono_medico" type="text" class="form-control input-sm"
+                            placeholder="Telefono del medico" onkeypress=" return SoloNumeros(event)">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Id</span>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="id_tutor" name="id_tutor" type="text" class="form-control input-sm" placeholder="Id">
+                    </div>
+                    <div class="col-md-1">
+                        <button id="botonBuscarIdTutor" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span>Tutor</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input readonly id="nombre_tutor" name="nombre_tutor" type="text" class="form-control 
+                                       input-sm"
+                            placeholder="Tutor" onkeyup="this.value = this.value.toUpperCase()">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer centrado">
+            <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+            <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+            <button id="BotonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+              <button id="botonInscribir" type="button" class="btn btn-primary btn-sm">Inscribir</button>
+        </div>
+    </div>
+    <div id="mensajes" class="well well-sm centrado">Mensaje del Sistema.</div>
+    <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header centrado">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">
+                            &times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                </div>
+                <div class="modal-footer centrado">
+                    <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    
+    <script>
+        verificarSesion(true);
+        $("#buscar").css("display", "none");
+        $("#id_alumno").focus();
+        siguienteCampo("#id_alumno", "#nroci_alumno", false);
+
+        $("#id_alumno").focusout(function (event) {
+            if ($("#id_alumno").val() === "") {
+                $("#id_alumno").val("0");
+            }
+            buscarIdAlumno();
+        });
+        $("#nroci_alumno").blur(function () {
+            buscarCedula();
+        });
+        $("#botonBuscarIdAlumno").on('click', function () {
+            $("#buscar").load("buscar.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+        $("#botonAgregar").on('click', function () {
+            if (validarFormulario()) {
+                agregarAlumno();
+            }
+        });
+        $("#botonModificar").on('click', function () {
+            if (validarFormulario()) {
+                modificarAlumno();
+            }
+        });
+        $("#botonEliminarAlert").on('click', function () {
+            eliminarAlumno();
+            $('#confirmarEliminar').modal('hide');
+        });
+        $("#botonSalir").on('click', function () {
+            location.href = "../../../menu.html";
+        });
+        
+         $("#botonInscribir").on('click', function () {
+            location.href = "../../procesos/inscripciones/index.html";
+        });
+        
+
+        //sexos
+
+        $("#id_sexo").focusout(function (event) {
+            if ($("#id_sexo").val() === "") {
+                $("#id_sexo").val("0");
+            }
+            buscarIdSexo();
+        });
+        $("#botonBuscarIdSexo").on('click', function () {
+            $("#buscar").load("buscarSexo.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+
+        // tutores
+
+        $("#id_tutor").focusout(function (event) {
+            if ($("#id_tutor").val() === "") {
+                $("#id_tutor").val("0");
+            }
+            buscarIdTutor();
+        });
+        $("#botonBuscarIdTutor").on('click', function () {
+            $("#buscar").load("buscarTutor.html");
+            $("#buscar").fadeIn("slow");
+            $("#panelPrograma").fadeOut("slow");
+        });
+    </script>
+</body>
+
+</html>

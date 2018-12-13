@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>&COPY;2018 | CEPI | Menus</title>
+        <link rel="icon" type="image/png" href="../../../img/icons/favicon.ico" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="confirmar"></div>
+        <div id="buscar"></div>
+        <div id="panelPrograma" class="panel panel-primary">
+            <div class="panel-heading centrado">Menus | <span id="snombre_empresa"></span> | <span id="susuario_usuario"></span></div>
+            <div class="panel-body">
+                <form id="formPrograma">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_menu" name="id_menu" type="text" class="form-control input-sm" onkeypress="return SoloNumeros(event)"  placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdMenu" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-9">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Nombre</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="nombre_menu" name="nombre_menu" type="text" class="form-control input-sm" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Código</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="codigo_menu" name="codigo_menu" type="text" class="form-control input-sm" placeholder="Código">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+                <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+                <button id="botonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+                <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+            </div>
+        </div>
+        <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+        <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header centrado">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                        Está seguro de eliminar estos datos?
+                    </div>
+                    <div class="modal-footer centrado">
+                        <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../../js/funciones.js" type="text/javascript"></script>
+        <script src="js/funciones.js" type="text/javascript"></script>
+        <script>
+         verificarSesion(true);
+            $("#buscar").css("display", "none");
+            $("#id_menu").focus();
+            siguienteCampo("#id_menu", "#nombre_menu", false);
+            siguienteCampo("#nombre_menu", "#codigo_menu", false);
+            $("#id_menu").focusout(function (event) {
+                if ($("#id_menu").val() === "") {
+                    $("#id_menu").val("0");
+                }
+                buscarIdMenu();
+            });
+            $("#botonBuscarIdMenu").on('click', function () {
+                $("#buscar").load("buscar.html");
+                $("#buscar").fadeIn("slow");
+                $("#panelPrograma").fadeOut("slow");
+            });
+            $("#botonAgregar").on('click', function () {
+                agregarMenu();
+            });
+            $("#botonModificar").on('click', function () {
+                modificarMenu();
+            });
+            $("#botonEliminarAlert").on('click', function () {
+                eliminarMenu();
+                $('#confirmarEliminar').modal('hide');
+            });
+            $("#botonSalir").on('click', function () {
+                location.href = "../../../menu.html";
+            });
+        </script>
+
+    </body>
+</html>
