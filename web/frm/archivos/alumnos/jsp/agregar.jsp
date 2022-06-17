@@ -22,10 +22,9 @@
     Sexos sexo = new Sexos();
     sexo.setId_sexo(id_sexo);
     
-    int id_tutor = Integer.parseInt(request.getParameter("id_tutor"));    
+    int id_tutor = Integer.parseInt(request.getParameter("id_tutor"));  
     Tutores tutor = new Tutores();
     tutor.setId_tutor(id_tutor);
-    
     
     String tipo = "error";
     String mensaje = "Datos no agregados.";
@@ -37,8 +36,7 @@
     alumno.setNroci_alumno(nroci_alumno);
     alumno.setFecha_nac_alumno(fecha_nac_alumno);    
     alumno.setNombre_medico(nombre_medico);
-    alumno.setTelefono_medico(telefono_medico);
-        
+    alumno.setTelefono_medico(telefono_medico);        
     alumno.setSexo(sexo);
     alumno.setTutor(tutor);    
     

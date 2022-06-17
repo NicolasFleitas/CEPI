@@ -256,28 +256,8 @@ function buscarNombreSexo() {
     });
 }
 
-
-
-function limpiarFormulario() {
-    $("#id_alumno").val("");
-    $("#nombre_alumno").val("");
-    $("#apellido_alumno").val("");
-    $("#nroci_alumno").val("");
-    $("#fecha_nac_alumno").val("");
-    $("#nombre_medico").val("");
-    $("#telefono_medico").val("");
-    $("#id_sexo").val("");
-    $("#nombre_sexo").val("");
-
-    $("#id_tutor").val("");
-    $("#nombre_tutor").val("");
-}
-
-
-
 function buscarIdTutor() {
     var datosFormulario = $("#formPrograma").serialize();
-
     $.ajax({
         type: 'POST',
         url: 'jsp/buscarIdTutor.jsp',
@@ -285,15 +265,14 @@ function buscarIdTutor() {
         dataType: 'json',
         beforeSend: function (objeto) {
             $("#mensajes").html("Enviando datos al Servidor ...");
-
         },
         success: function (json) {
+            console.log("ENTRO FUNCIONES ID ALUMNOS");
             $("#mensajes").html(json.mensaje);
             $("#id_tutor").val(json.id_tutor);
             $("#nombre_tutor").val(json.nombre_tutor);
-            $("#apellido_tutor").val(json.apellido_tutor);
+           /* $("#apellido_tutor").val(json.apellido_tutor);
             $("#ruc_tutor").val(json.ruc_tutor);
-
             $("#telefono_tutor").val(json.telefono_tutor);
             $("#direccion_tutor").val(json.direccion_tutor);
             $("#email_tutor").val(json.email_tutor);
@@ -311,12 +290,12 @@ function buscarIdTutor() {
             $("#id_estadocivil").val(json.id_estadocivil);
             $("#nombre_estadocivil").val(json.nombre_estadocivil);
             $("#id_parentesco").val(json.id_parentesco);
-            $("#nombre_parentesco").val(json.nombre_parentesco);
-
+            $("#nombre_parentesco").val(json.nombre_parentesco);            
+            */
         },
         error: function (e) {
-            $("#mensajes").html("No se pudo modificar los datos.");
-
+            $("#mensajes").html("No se pudo modificar los datos TUTOR.");
+            console.log("error en funciones alumnos ");
         },
         complete: function (objeto, exito, error) {
             if (exito === "success") {}
@@ -337,6 +316,7 @@ function buscarNombreTutor() {
             $("#contenidoBusqueda").css("display", "none");
         },
         success: function (json) {
+            console.log("ENTRO FUNCIONES NONBRE ALUMNOS");
             $("#mensajes").html(json.mensaje);
             $("#contenidoBusqueda").html(json.contenido);
             $("#contenidoBusqueda").fadeIn("slow");
@@ -359,6 +339,21 @@ function buscarNombreTutor() {
             }
         }
     });
+}
+
+function limpiarFormulario() {
+    $("#id_alumno").val("");
+    $("#nombre_alumno").val("");
+    $("#apellido_alumno").val("");
+    $("#nroci_alumno").val("");
+    $("#fecha_nac_alumno").val("");
+    $("#nombre_medico").val("");
+    $("#telefono_medico").val("");
+    $("#id_sexo").val("");
+    $("#nombre_sexo").val("");
+
+    $("#id_tutor").val("");
+    $("#nombre_tutor").val("");
 }
 
 

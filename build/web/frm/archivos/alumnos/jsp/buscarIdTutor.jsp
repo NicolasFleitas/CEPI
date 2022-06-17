@@ -3,11 +3,8 @@
 <%@page import="modelos.Tutores"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
-<%
-    
-    
+<%  
     int id_tutor = Integer.parseInt(request.getParameter("id_tutor"));
-    
     String tipo = "error";
     String mensaje = "Datos no encontrados.";
     String nuevo = "true";
@@ -22,8 +19,7 @@
     }/*else {
         tutor = new Tutores();
     }*/ 
-    //ya esta en el controlador
-    
+    //ya esta en el controlador    
     JSONObject obj = new JSONObject();
     obj.put("tipo", tipo);
     obj.put("mensaje", mensaje);
@@ -34,9 +30,8 @@
     obj.put("ruc_tutor", tutor.getRuc_tutor());
     obj.put("direccion_tutor", tutor.getDireccion_tutor());
     obj.put("telefono_tutor", tutor.getTelefono_tutor());
-    obj.put("email_tutor", tutor.getEmail());
-    
-    obj.put("fecha_nac_tutor", tutor.getFecha_nac_tutor());
+    obj.put("email_tutor", tutor.getEmail());    
+    obj.put("fecha_nac_tutor", String.valueOf( tutor.getFecha_nac_tutor()));
     obj.put("profesion_tutor", tutor.getProfesion_tutor());
     obj.put("ocupacion_tutor", tutor.getOcupacion_tutor());
     obj.put("direccion_laboral_tutor", tutor.getDireccion_laboral_tutor());

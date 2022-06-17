@@ -16,7 +16,7 @@
     JSONObject obj = new JSONObject();
     obj.put("tipo", tipo);
     obj.put("nroci_alumno", alumno.getNroci_alumno());
-    System.out.println(alumno.getNroci_alumno());
+    //System.out.println(alumno.getNroci_alumno());
     out.print(obj);
     out.flush();
 %>

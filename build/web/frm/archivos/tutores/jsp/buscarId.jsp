@@ -4,12 +4,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%
-    
-    
     int id_tutor = Integer.parseInt(request.getParameter("id_tutor"));
-    
-    
-    
     String tipo = "error";
     String mensaje = "Datos no encontrados.";
     String nuevo = "true";
@@ -24,8 +19,7 @@
     }/*else {
         tutor = new Tutores();
     }*/ 
-    //ya esta en el controlador
-    
+    //ya esta en el controlador    
     JSONObject obj = new JSONObject();
     obj.put("tipo", tipo);
     obj.put("mensaje", mensaje);

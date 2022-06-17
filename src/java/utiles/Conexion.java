@@ -18,9 +18,9 @@ public class Conexion {
     private static String driver = "org.postgresql.Driver";
     private static String servidor = "localhost";
     private static String puerto = "5432";
-    private static String baseDato = "CEPI";
+    private static String baseDato = "cepi";
     private static String usuario = "postgres";
-    private static String clave = "1";
+    private static String clave = "5004";
     private static Connection conn;
     private static Statement st;
 
